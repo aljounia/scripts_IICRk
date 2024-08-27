@@ -1,6 +1,6 @@
 ---
 title: "Example of IICRk computation and plotting"
-output: html_notebook
+output: rmarkdown::github_document
 ---
 
 First, we load the R script that contains the functions to compute the IICRk.
