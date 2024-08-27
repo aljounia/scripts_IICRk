@@ -19,7 +19,7 @@ M <- rbind(c(0,1/2,1/2),c(1/2,0,1/2),c(1/2,1/2,0)) #Migration matrix of the 4-is
 Finally, we compute the IICR for k=2 and plot it.
 ```{r}
 iicr1 <- IICRvector(M,E,e,c,range,k=2) #Computation of the IICR
-plot(log(range),iicr1, type = "l",lty=1,ylab = "IICR",xlim = c(-5,5),ylim = c(0,15))
+plot(log(range),iicr1, type = "l",lty=1,ylab = "IICR",ylim = c(0,15))
 ```
 Now, we can vary the sample size and see how the IICR changes. Note that you have to multiply the IICR by the number of possible pairs of lineages to get the IICR in the same scale.
 ```{r}
