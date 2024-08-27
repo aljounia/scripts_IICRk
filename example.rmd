@@ -1,0 +1,51 @@
+---
+title: "Example of IICRk computation and plotting"
+output: html_notebook
+---
+
+First, we load the R script that contains the functions to compute the IICRk.
+```{r}
+source("iicrk.R")
+```
+Then, we setup a 3-island model in which we sample 2 lineages in the same island.
+```{r}
+E<-StatesSCOpti(2,3) #Computation of the state space
+range=seq(0,5.0,0.01)
+ #Range of time values for which the IICR will be computed
+c <- c(1,1,1) #Relative deme sizes
+e <- 1 #State considered
+M <- rbind(c(0,1/2,1/2),c(1/2,0,1/2),c(1/2,1/2,0)) #Migration matrix of the 4-island
+```
+Finally, we compute the IICR for k=2 and plot it.
+```{r}
+iicr1 <- IICRvector(M,E,e,c,range,k=2) #Computation of the IICR
+plot(log(range),iicr1, type = "l",lty=1,ylab = "IICR",xlim = c(-5,5),ylim = c(0,15))
+```
+Now, we can vary the sample size and see how the IICR changes. Note that you have to multiply the IICR by the number of possible pairs of lineages to get the IICR in the same scale.
+```{r}
+E<-StatesSCOpti(4,3)
+e <- 1
+c <- rep(1,3)
+range=seq(0,5.0,0.01)
+
+M <- rbind(c(0,1/2,1/2),c(1/2,0,1/2),c(1/2,1/2,0))
+iicr <- IICRvector(M,E,e,c,range,4)
+
+plot(log(range),choose(4,2)*iicr, type = "l",lty=1,ylab = "IICR",ylim=c(0,5))
+
+E<-StatesSCOpti(6,3)
+
+iicr <- IICRvector(M,E,e,c,range,6)
+lines(log(range),choose(6,2)*iicr,lty=1,col="red")
+
+E<-StatesSCOpti(2,3)
+
+iicr <- IICRvector(M,E,e,c,range,2)
+lines(log(range),iicr,lty=1,col="green")
+
+legend('topleft',legend=c("k = 2","k = 4","k = 6"),
+       cex=0.8,col=c("green","black","red"), lty=c(1,1,1))
+
+```
+
+
