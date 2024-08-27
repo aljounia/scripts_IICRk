@@ -38,7 +38,7 @@ iicr1 <- IICRvector(M,E,e,c,range,k=2) #Computation of the IICR
 plot(log(range),iicr1, type = "l",lty=1,ylab = "IICR",ylim = c(0,15))
 ```
 
-![](/Users/jouniaux/PycharmProjects/scripts_IICRk/example_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+![](/example_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 Now, we can vary the sample size and see how the IICR changes. Note that
 you have to multiply the IICR by the number of possible pairs of
 lineages to get the IICR in the same scale.
@@ -68,4 +68,4 @@ legend('topleft',legend=c("k = 2","k = 4","k = 6"),
        cex=0.8,col=c("green","black","red"), lty=c(1,1,1))
 ```
 
-![](/Users/jouniaux/PycharmProjects/scripts_IICRk/example_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+![](/example_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
